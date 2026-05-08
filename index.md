@@ -1,5 +1,5 @@
 
-![alt text](2023_headshot_dunne.jpg "headshot"){: width="200px"}
+![alt text](assets/2023_headshot_dunne.jpg "headshot"){: width="200px"}
 
 Hi, I'm Steven Dunne! I am a third year Biophysics PhD student in the  [Rotskoff Group](https://statmech.stanford.edu/). I primarily work on intersections between sampling methods, machine learning, and biophysics.
 Previously, I was an undergraduate student at the University of Michigan, where I studied Applied Mathemetics and Biochemistry.

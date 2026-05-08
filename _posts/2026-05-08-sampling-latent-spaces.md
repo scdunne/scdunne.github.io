@@ -1,7 +1,7 @@
 ## Sampling in Latent Variable Models: Variational Lifting for Convergent, Exact Sampling
 
 
-![alt text](../assets/lifting-explainer.jpg "Lifting"){: width="500px"}
+![alt text]({{ site.baseurl }}/assets/lifting-explainer.png "Lifting"){: width="300px"}
 
 
 This post is a work in progress! The goal is to describe the intuition behind the sampling method we propose in the ArXiv preprint [Variational Lifting: Convergent, Exact Sampling with Latent Generative Models](fill_in_this_link_TODO.com). The method is called variational lifting, and it is a way to use latent variable models to perform exact sampling from complex distributions.

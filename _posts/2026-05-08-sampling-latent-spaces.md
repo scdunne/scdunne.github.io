@@ -19,3 +19,9 @@ some non-inline examples: $$ U(x) $$
 hm
 $U(x)$
 hmmmm
+
+hm
+
+$U(x)$
+
+hmmmm

@@ -5,3 +5,37 @@ I am a third year Biophysics PhD student in the  [Rotskoff Group](https://statme
 Previously, I was an undergraduate student at the University of Michigan, where I studied Applied Mathemetics and Biochemistry.
 As an undergrad, I worked on a range of research projects, from designing mathematical models for pharmacokinetics in the Rosania Group, to
 using molecular dynamics and graph theory to study nanomaterials in the Glotzer group. 
+
+
+
+<div style="max-width: 740px; margin: 0 auto;">    
+<h2 id="publications">Publications</h2>
+
+<strong>Peer-reviewed</strong><br/>
+<ul>
+<li class="paper" words="add, your, keywords, here">
+    <a href="http://www.mdpi.com/1999-4923/14/1/15">Quantitative Analysis of the Phase 
+        Transition Mechanism Underpinning the Systemic Self-Assembly of a Mechanopharmaceutical Device</a> 
+    <b>Steven Dunne</b>, Andrew R. Willmer, Rosemary Swanson, Deepak Almeida, Nicole C. Ammerman, Kathleen A. Stringer, Edmund V. Capparelli, Gus R. Rosania
+</li>
+<li class="paper" words="add, your, keywords, here">
+    <a href="http://www.mdpi.com/1999-4923/14/1/17">An Adaptive Biosystems Engineering Approach towards
+        Modeling the Soluble-to-Insoluble Phase Transition of Clofazimine</a> 
+    Andrew R. Willmer, <b>Steven Dunne</b>, Rosemary Swanson, Deepak Almeida, Nicole C. Ammerman, Kathleen A. Stringer, Edmund V. Capparelli
+</li>
+<li class="paper" words="add, your, keywords, here">
+    <a href="https://www.sciencedirect.com/science/article/pii/S0168365922002929">Molecular design
+        of a pathogen activated, self-assembling mechanopharmaceutical device</a>
+        Andrew R. Willmer, Jiayi Nie, Mery Vet George De la Rosa, Winnie Wen, <b>Steven Dunne</b>, Gus R. Rosania     
+</li>           
+</ul>
+
+<strong>Preprints/In Progress</strong><br/>
+<ul>
+<li class="paper" words="add, your, keywords, here">
+    <a href="#"></a>Variational Lifting: Convergent, Exact Sampling with Latent Generative Models
+    <b>Steven Dunne</b>, Jérémie Klinger, Alkividias Boukas, Marylou Gabrié, Grant Rotskoff
+    <i>In Preparation</i>
+</li>
+</ul>
+</div>

@@ -30,7 +30,7 @@ using molecular dynamics and graph theory to study nanomaterials in the Glotzer 
 </li>           
 </ul>
 
-<strong>Preprints/In Progress</strong><br/>
+<!-- <strong>Preprints/In Progress</strong><br/>
 <ul>
 <li class="paper" words="add, your, keywords, here">
     <a href="#"></a>Variational Lifting: Convergent, Exact Sampling with Latent Generative Models
@@ -38,4 +38,4 @@ using molecular dynamics and graph theory to study nanomaterials in the Glotzer 
     <i>In Preparation</i>
 </li>
 </ul>
-</div>
+</div> -->

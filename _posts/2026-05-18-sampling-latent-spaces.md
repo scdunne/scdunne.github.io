@@ -26,29 +26,3 @@ To actually implement this algorithm, you need a *proposal* distribution which w
 
 
 The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x=1.0$ to $x' = 1.2$ under $q$, you might want to reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements this as follows:
-
-
-{% raw %}
-<pre id="my-algorithm" style="display:hidden;">
-\begin{algorithm}
-\Require Initial coordinates $x_0$, energy function $E(x)$, inverse temperature $\beta$, easy-to-sample proposal distribution $q(x' \mid x)$, number of simulation steps $T$, burn-in time $b$ \\
-\For{$t \in \{1, \dots, T\}$}
-\State Sample $x' \sim q(x' \mid x_t)$
-\State Compute $\alpha = \frac{p(x')}{p(x)} \frac{q(x \mid x')}{q(x' \mid x)} = \exp(-\beta E(x') + \beta E(x)) \frac{q(x \mid x')}{q(x' \mid x)}$
-\State Sample $u \sim \text{Unif}[0,1]$
-\If{$u < \alpha$}
-    \State $x_{t+1} \gets x'$
-\Else{}
-    \State $x_{t+1} \gets x_t$
-\EndIf
-\Return $ \{ x_t \}_{t=b}^T$
-\EndFor
-\end{algorithm}
-</pre>
-{% endraw %}
-
-<script>
-  pseudocode.renderElement(document.getElementById("my-algorithm"));
-</script>
-
-Is this rendering???

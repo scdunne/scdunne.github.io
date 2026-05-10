@@ -28,7 +28,7 @@ To actually implement this algorithm, you need a *proposal* distribution which w
 The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x=1.0$ to $x' = 1.2$ under $q$, you might want to reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements this as follows:
 
 
-
+{% raw %}
 <pre id="my-algorithm">
 \begin{algorithm}
 \caption{My Algorithm}
@@ -48,6 +48,7 @@ The exact algorithm balances this property of going to lower energy states more 
 \end{algorithmic}
 \end{algorithm}
 </pre>
+{% endraw %}
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -56,3 +57,5 @@ The exact algorithm balances this property of going to lower energy states more 
     }
   });
 </script>
+
+debugging... can you see this?

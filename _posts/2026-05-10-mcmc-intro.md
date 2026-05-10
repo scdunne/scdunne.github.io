@@ -1,10 +1,10 @@
-## Sampling Using Latent Variable Models: *Variational Lifting*
-
+## An introduction to Markov Chain Monte Carlo (MCMC)
+<!-- 
 
 ![alt text]({{ site.baseurl }}/assets/lifting-explainer.png "Visual explainer for lifted Monte Carlo"){: width="500px"}
 
 
-This post is a work in progress! The goal is to describe the intuition behind the sampling method we propose in the ArXiv preprint [Variational Lifting: Convergent, Exact Sampling with Latent Generative Models](fill_in_this_link_TODO.com). The method is called variational lifting, and it is a way to use latent variable models to perform exact sampling from complex distributions.
+This post is a work in progress! The goal is to describe the intuition behind the sampling method we propose in the ArXiv preprint [Variational Lifting: Convergent, Exact Sampling with Latent Generative Models](fill_in_this_link_TODO.com). The method is called variational lifting, and it is a way to use latent variable models to perform exact sampling from complex distributions. -->
 
 ---
 

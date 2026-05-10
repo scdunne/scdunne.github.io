@@ -39,9 +39,9 @@ The exact algorithm balances this property of going to lower energy states more 
 \STATE Compute acceptance ratio $\alpha$ from energy and proposal distributions
 \STATE Sample uniform random $u \in [0,1]$
 \IF{$u < \alpha$}
-    \STATE $ x_{t+1} \gets x' $ 
+    \STATE $ x_{t+1} \GETS x' $ 
 \ELSE
-    \STATE $ x_{t+1} \gets x_t $ 
+    \STATE $ x_{t+1} \GETS x_t $ 
 \ENDIF
 \ENDFOR
 \RETURN $ \{ x_t \}_{t=b}^T $
@@ -60,6 +60,12 @@ The exact algorithm balances this property of going to lower energy states more 
       console.log("Algorithm element found:", elem);
       if (elem && typeof pseudocode !== 'undefined') {
         try {
+          // Configure pseudocode.js to use MathJax
+          pseudocode.configure({ 
+            lineNumber: false,
+            noEnd: false,
+            mathBackend: 'mathjax'
+          });
           pseudocode.renderElement(elem);
           console.log("Algorithm rendered successfully");
         } catch(e) {

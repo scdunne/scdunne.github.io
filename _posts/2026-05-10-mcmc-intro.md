@@ -25,7 +25,40 @@ The ability to compare the relative probabilities of two states allows us to use
 To actually implement this algorithm, you need a *proposal* distribution which we call $q$. This just gives you a way to propose the next state $x'$, given that you are currently at state $x$, and we have to also know its probability density $q(x' \mid x)$.
 
 
-The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x=1.0$ to $x' = 1.2$ under $q$, you might want to reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements this as follows:
+<pre id="quicksort" class="pseudocode">
+    % This quicksort algorithm is extracted from Chapter 7, Introduction to Algorithms (3rd edition)
+    \begin{algorithm}
+    \caption{Quicksort}
+    \begin{algorithmic}
+    \PROCEDURE{Quicksort}{$A, p, r$}
+        \IF{$p < r$} 
+            \STATE $q = $ \CALL{Partition}{$A, p, r$}
+            \STATE \CALL{Quicksort}{$A, p, q - 1$}
+            \STATE \CALL{Quicksort}{$A, q + 1, r$}
+        \ENDIF
+    \ENDPROCEDURE
+    \PROCEDURE{Partition}{$A, p, r$}
+        \STATE $x = A[r]$
+        \STATE $i = p - 1$
+        \FOR{$j = p$ \TO $r - 1$}
+            \IF{$A[j] < x$}
+                \STATE $i = i + 1$
+                \STATE exchange
+                $A[i]$ with $A[j]$
+            \ENDIF
+            \STATE exchange $A[i]$ with $A[r]$
+        \ENDFOR
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
+
+<script>
+    pseudocode.renderElement(document.getElementById("quicksort"));
+</script>
+
+
+The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x=1.0$ to $x' = 1.2$ under $q$, you might want to reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements is as follows:
 
 
 {% raw %}
@@ -33,15 +66,15 @@ The exact algorithm balances this property of going to lower energy states more 
 \begin{algorithm}
 \caption{My Algorithm}
 \begin{algorithmic}
-\Require Initial coordinates $x_0$, energy function $E(x)$, inverse temperature $\beta$, easy-to-sample proposal distribution $q(x' \mid x)$, number of simulation steps $T$, burn-in time $b$ \\
+\Require Initial coordinates $x_0$, energy function $U(x)$, inverse temperature $\beta$, easy-to-sample proposal distribution $q(x' \mid x)$, number of simulation steps $T$, burn-in time $b$ \\
 \FOR{$t \in \{1, \dots, T\}$}
 \STATE Sample proposal $x' \sim q(x' \mid x_t)$
 \STATE Compute acceptance ratio $\alpha$ from energy and proposal distributions
 \STATE Sample uniform random $u \in [0,1]$
 \IF{$u < \alpha$}
-    \STATE $ x_{t+1} \GETS x' $ 
+    \STATE $ x_{t+1} \gets x' $ 
 \ELSE
-    \STATE $ x_{t+1} \GETS x_t $ 
+    \STATE $ x_{t+1} \gets x_t $ 
 \ENDIF
 \ENDFOR
 \RETURN $ \{ x_t \}_{t=b}^T $

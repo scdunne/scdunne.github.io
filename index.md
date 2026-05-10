@@ -33,7 +33,7 @@ using molecular dynamics and graph theory to study nanomaterials in the Glotzer 
 
 
 
-<div style="max-width: 740px; margin: 0 auto;">    
+<!-- <div style="max-width: 740px; margin: 0 auto;">    
 <h2 id="publications">Publications</h2>
 
 <strong>Peer-reviewed</strong><br/>
@@ -53,7 +53,7 @@ using molecular dynamics and graph theory to study nanomaterials in the Glotzer 
         of a pathogen activated, self-assembling mechanopharmaceutical device</a>
         Andrew R. Willmer, Jiayi Nie, Mery Vet George De la Rosa, Winnie Wen, <b>Steven Dunne</b>, Gus R. Rosania     
 </li>           
-</ul>
+</ul> -->
 
 <!-- <strong>Preprints/In Progress</strong><br/>
 <ul>

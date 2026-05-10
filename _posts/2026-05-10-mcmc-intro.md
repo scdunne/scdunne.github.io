@@ -52,8 +52,17 @@ The exact algorithm balances this property of going to lower energy states more 
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById("my-algorithm")) {
-      pseudocode.renderElement(document.getElementById("my-algorithm"));
+    console.log("DOMContentLoaded fired");
+    console.log("pseudocode library loaded:", typeof pseudocode !== 'undefined');
+    const elem = document.getElementById("my-algorithm");
+    console.log("Algorithm element found:", elem);
+    if (elem && typeof pseudocode !== 'undefined') {
+      try {
+        pseudocode.renderElement(elem);
+        console.log("Algorithm rendered successfully");
+      } catch(e) {
+        console.error("Error rendering algorithm:", e);
+      }
     }
   });
 </script>

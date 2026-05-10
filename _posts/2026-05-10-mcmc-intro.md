@@ -56,14 +56,8 @@ The exact algorithm balances this property of going to lower energy states more 
           pseudocode.renderElement(elem);
           console.log("Algorithm rendered successfully");
           
-          // Force MathJax to process the element and its children
+          // Trigger MathJax to process the rendered content
           if (window.MathJax) {
-            // Find all script tags with math in the rendered element
-            const scripts = elem.querySelectorAll('script[type="math/tex"], script[type="math/tex; mode=display"]');
-            scripts.forEach(script => {
-              MathJax.Hub.Queue(["Typeset", MathJax.Hub, script]);
-            });
-            // Also try to typeset the whole element
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, elem]);
           }
         } catch(e) {

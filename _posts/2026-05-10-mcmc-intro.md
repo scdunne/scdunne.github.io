@@ -54,15 +54,25 @@ The exact algorithm balances this property of going to lower energy states more 
   document.addEventListener('DOMContentLoaded', function() {
     console.log("DOMContentLoaded fired");
     console.log("pseudocode library loaded:", typeof pseudocode !== 'undefined');
-    const elem = document.getElementById("my-algorithm");
-    console.log("Algorithm element found:", elem);
-    if (elem && typeof pseudocode !== 'undefined') {
-      try {
-        pseudocode.renderElement(elem);
-        console.log("Algorithm rendered successfully");
-      } catch(e) {
-        console.error("Error rendering algorithm:", e);
+    
+    const renderAlgorithm = function() {
+      const elem = document.getElementById("my-algorithm");
+      console.log("Algorithm element found:", elem);
+      if (elem && typeof pseudocode !== 'undefined') {
+        try {
+          pseudocode.renderElement(elem);
+          console.log("Algorithm rendered successfully");
+        } catch(e) {
+          console.error("Error rendering algorithm:", e);
+        }
       }
+    };
+    
+    // Wait for MathJax to be ready before rendering
+    if (window.MathJax) {
+      MathJax.Hub.Queue(renderAlgorithm);
+    } else {
+      renderAlgorithm();
     }
   });
 </script>

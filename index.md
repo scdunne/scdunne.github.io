@@ -15,15 +15,15 @@ using molecular dynamics and graph theory to study nanomaterials in the Glotzer 
 </section>
 
 <script>
-  fetch('/publications.json')   // adjust path to match your RECORD_FILE
+  fetch('/assets/record.json')
     .then(r => r.json())
     .then(data => {
       const list = document.getElementById('pub-list');
       list.innerHTML = data.map(pub => `
         <li>
           <strong>${pub.title}</strong><br>
-          ${pub.authors} — <em>${pub.venue}</em>, ${pub.year}
-          ${pub.citedBy ? ` · Cited by ${pub.citedBy}` : ''}
+          ${pub.authors.map(a => a.name).join(', ')} — <em>${pub.venue}</em>, ${pub.year}
+          ${pub.citationCount ? ` · Cited by ${pub.citationCount}` : ''}
         </li>
       `).join('');
     });

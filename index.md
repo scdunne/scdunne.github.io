@@ -9,7 +9,7 @@ using molecular dynamics and graph theory to study nanomaterials in the Glotzer 
 
 
 
-<<section id="publications">
+<section id="publications">
   <h2>Publications</h2>
   <ul id="pub-list">Loading…</ul>
 </section>
@@ -22,7 +22,7 @@ using molecular dynamics and graph theory to study nanomaterials in the Glotzer 
       list.innerHTML = data.map(pub => `
         <li>
           <strong>${pub.title}</strong><br>
-          ${pub.authors.map(a => a.name).join(', ')} — <em>${pub.venue}</em>, ${pub.year}
+          ${pub.authors.map(a => a.name === 'Steven Dunne' ? `<strong>${a.name}</strong>` : a.name).join(', ')} — <em>${pub.venue}</em>, ${pub.year}
           ${pub.citationCount ? ` · Cited by ${pub.citationCount}` : ''}
         </li>
       `).join('');

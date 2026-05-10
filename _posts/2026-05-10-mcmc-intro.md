@@ -60,14 +60,13 @@ The exact algorithm balances this property of going to lower energy states more 
       console.log("Algorithm element found:", elem);
       if (elem && typeof pseudocode !== 'undefined') {
         try {
-          // Configure pseudocode.js to use MathJax
-          pseudocode.configure({ 
-            lineNumber: false,
-            noEnd: false,
-            mathBackend: 'mathjax'
-          });
           pseudocode.renderElement(elem);
           console.log("Algorithm rendered successfully");
+          
+          // Now process the rendered content with MathJax
+          if (window.MathJax) {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, elem]);
+          }
         } catch(e) {
           console.error("Error rendering algorithm:", e);
         }

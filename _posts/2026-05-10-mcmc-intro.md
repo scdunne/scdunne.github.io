@@ -35,9 +35,9 @@ The exact algorithm balances this property of going to lower energy states more 
 \begin{algorithmic}
 \Require Initial coordinates $x_0$, energy function $E(x)$, inverse temperature $\beta$, easy-to-sample proposal distribution $q(x' \mid x)$, number of simulation steps $T$, burn-in time $b$ \\
 \For{$t \in \{1, \dots, T\}$}
-\State Sample $x' \sim q(x' \mid x_t)$
-\State Compute $\alpha = \frac{p(x')}{p(x)} \frac{q(x \mid x')}{q(x' \mid x)} = \exp(-\beta E(x') + \beta E(x)) \frac{q(x \mid x')}{q(x' \mid x)}$
-\State Sample $u \sim \text{Unif}[0,1]$
+\State Sample proposal $x' \sim q(x' \mid x_t)$
+\State Compute acceptance ratio $\alpha$ from energy and proposal distributions
+\State Sample uniform random $u \in [0,1]$
 \If{$u < \alpha$}
     \State $x_{t+1} \gets x'$
 \Else{}

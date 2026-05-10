@@ -1,0 +1,75 @@
+[
+  {
+    "paperId": "9ce3d11df9855a098fd52d5784c584022e659993",
+    "externalIds": {
+      "ArXiv": "2412.13415",
+      "DOI": "10.1021/acs.jctc.5c00102",
+      "CorpusId": 274822686,
+      "PubMed": "40168529"
+    },
+    "title": "Scaling Field-Theoretic Simulation for Multicomponent Mixtures with Neural Operators.",
+    "venue": "Journal of Chemical Theory and Computation",
+    "year": 2024,
+    "citationCount": 1,
+    "authors": [
+      {
+        "authorId": "88662318",
+        "name": "Emmit K Pert"
+      },
+      {
+        "authorId": "90690750",
+        "name": "Clay H. Batton"
+      },
+      {
+        "authorId": "2380767680",
+        "name": "Sherry Li"
+      },
+      {
+        "authorId": "2336734456",
+        "name": "Steven Dunne"
+      },
+      {
+        "authorId": "7272946",
+        "name": "Grant M. Rotskoff"
+      }
+    ]
+  },
+  {
+    "paperId": "f8e518ea8fcf6504f9f17ad11521d514efd41905",
+    "externalIds": {
+      "ArXiv": "2412.15344",
+      "DOI": "10.1038/s44431-025-00004-7",
+      "CorpusId": 281636985
+    },
+    "title": "Graph-theoretical description and continuity problems for stress propagation through complex strut lattices",
+    "venue": "npj Soft Matter",
+    "year": 2024,
+    "citationCount": 2,
+    "authors": [
+      {
+        "authorId": "1399070226",
+        "name": "Marcos A. Reyes-Martinez"
+      },
+      {
+        "authorId": "2261390298",
+        "name": "Alain Kadar"
+      },
+      {
+        "authorId": "2336734456",
+        "name": "Steven Dunne"
+      },
+      {
+        "authorId": "145205400",
+        "name": "S. Glotzer"
+      },
+      {
+        "authorId": "2382638918",
+        "name": "Christopher L. Soles"
+      },
+      {
+        "authorId": "2250699012",
+        "name": "Nicholas A. Kotov"
+      }
+    ]
+  }
+]

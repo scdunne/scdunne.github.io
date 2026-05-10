@@ -1,8 +1,9 @@
-name: Update Record
+name: Update Publications
+
 on:
   schedule:
-    - cron: "0 0 1 * *"   # Runs on the 1st of every month
-  workflow_dispatch:        # Allows manual runs from the Actions tab
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,30 +16,28 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Get record with token
-      uses: sxlllslgh/google-scholar-fetcher@v1
-      id: record
-      with:
-        google-scholar-id: ${{ vars.GOOGLE_SCHOLAR_ID }}
-        record-file: ${{ vars.RECORD_FILE }}
+    - name: Fetch from Semantic Scholar
+      run: |
+        python3 - <<'EOF'
+        import urllib.request, json
 
-    - name: Make sure the record file is tracked
-      run: git add ${{ vars.RECORD_FILE }}
+        AUTHOR_ID = "${{ vars.SEMANTIC_SCHOLAR_ID }}"
+        RECORD_FILE = "${{ vars.RECORD_FILE }}"
 
-    - name: Judge if file changed
-      id: changed
-      continue-on-error: true
-      run: git diff --exit-code ${{ vars.RECORD_FILE }}
+        url = f"https://api.semanticscholar.org/graph/v1/author/{AUTHOR_ID}/papers?fields=title,authors,year,venue,citationCount,externalIds&limit=100"
+        with urllib.request.urlopen(url) as r:
+            data = json.load(r)
 
-    - name: Judge if staged file changed
-      id: cached
-      continue-on-error: true
-      run: git diff --exit-code --cached ${{ vars.RECORD_FILE }}
+        papers = data.get("data", [])
+        with open(RECORD_FILE, "w") as f:
+            json.dump(papers, f, indent=2)
 
-    - name: Update record
-      if: ${{ steps.changed.outcome == 'failure' || steps.cached.outcome == 'failure' }}
+        print(f"Wrote {len(papers)} papers to {RECORD_FILE}")
+        EOF
+
+    - name: Commit if changed
       run: |
         git config --global user.name '${{ vars.GIT_USERNAME }}'
         git config --global user.email '${{ vars.GIT_EMAIL }}'
-        git commit -am "Automatically update record."
-        git push
+        git add ${{ vars.RECORD_FILE }}
+        git diff --staged --quiet || git commit -m "Automatically update publications." && git push

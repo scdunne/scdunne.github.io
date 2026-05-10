@@ -18,7 +18,7 @@ Let's start with a simple example. Suppose we have two states in one dimension s
 
 In most use cases, we don't have access to the normalizing constant $Z$, but we do have access to $U$. You can think about this as being able to evaluate an energy, but only evaluating *relative* probabilities: say we're comparing state $x$ and state $x'$, then 
 
-$\frac{\pi(x')}{\pi(x)} = \frac{ Z^{-1} \exp (- \beta U(x')}{Z^{-1} \exp (- \beta U(x)} = \exp (- \beta U(x') + \beta U(x))$
+$\frac{\pi(x')}{\pi(x)} = \frac{ Z^{-1} \exp (- \beta U(x'))}{Z^{-1} \exp (- \beta U(x))} = \exp (- \beta U(x') + \beta U(x))$
 
 The ability to compare the relative probabilities of two states allows us to use a class of sampling algorithms called Markov Chain Monte Carlo (MCMC). The basic idea is to set up a set of random 'moves' that will always go down in energy when possible, but occasionally go up in energy. This leads to having more samples in lower energy states, but still a few in higher energy states. If you collect enough samples from this process, you end up with a set of $x$ values whose coordinates are distributed according to $\pi(x)$; which we write using the notation $x \sim \pi(\cdot)$. 
 
@@ -31,6 +31,8 @@ The exact algorithm balances this property of going to lower energy states more 
 
 <pre id="my-algorithm" style="display:hidden;">
 \begin{algorithm}
+\caption{My Algorithm}
+\begin{algorithmic}
 \Require Initial coordinates $x_0$, energy function $E(x)$, inverse temperature $\beta$, easy-to-sample proposal distribution $q(x' \mid x)$, number of simulation steps $T$, burn-in time $b$ \\
 \For{$t \in \{1, \dots, T\}$}
 \State Sample $x' \sim q(x' \mid x_t)$
@@ -43,6 +45,7 @@ The exact algorithm balances this property of going to lower energy states more 
 \EndIf
 \Return $ \{ x_t \}_{t=b}^T$
 \EndFor
+\end{algorithmic}
 \end{algorithm}
 </pre>
 

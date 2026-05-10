@@ -39,11 +39,11 @@ The exact algorithm balances this property of going to lower energy states more 
 \State Compute acceptance ratio $\alpha$ from energy and proposal distributions
 \State Sample uniform random $u \in [0,1]$
 \If{$u < \alpha$}
-    \State $x_{t+1} \gets x'$
+    \State $x_{t+1} \gets x' $ 
 \Else{}
-    \State $x_{t+1} \gets x_t$
+    \State $x_{t+1} \gets x_t $ 
 \EndIf
-\Return $ \{ x_t \}_{t=b}^T$
+\Return $ \{ x_t \}_{t=b}^T $ 
 \EndFor
 \end{algorithmic}
 \end{algorithm}

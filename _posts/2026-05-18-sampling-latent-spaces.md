@@ -12,16 +12,3 @@ This post is a work in progress! The goal is to describe the intuition behind th
 
 Suppose we want to sample from a Boltzmann distribution of the form $\pi(x) = \frac{1}{Z} e^{-U(x)} $, where $ U(x) $ is a potential energy function and $ Z $ is the normalizing constant. This is a common problem in statistical physics, machine learning, and many other fields. However, sampling from this distribution can be challenging, especially when $U(x)$ is complex and high-dimensional.
 
-
-some non-inline examples: $$ U(x) $$
-
-
-hm
-$U(x)$
-hmmmm
-
-hm
-
-$U(x)$
-
-hmmmm

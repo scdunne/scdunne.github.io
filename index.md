@@ -8,6 +8,31 @@ using molecular dynamics and graph theory to study nanomaterials in the Glotzer 
 
 
 
+
+<<section id="publications">
+  <h2>Publications</h2>
+  <ul id="pub-list">Loading…</ul>
+</section>
+
+<script>
+  fetch('/publications.json')   // adjust path to match your RECORD_FILE
+    .then(r => r.json())
+    .then(data => {
+      const list = document.getElementById('pub-list');
+      list.innerHTML = data.map(pub => `
+        <li>
+          <strong>${pub.title}</strong><br>
+          ${pub.authors} — <em>${pub.venue}</em>, ${pub.year}
+          ${pub.citedBy ? ` · Cited by ${pub.citedBy}` : ''}
+        </li>
+      `).join('');
+    });
+</script>
+
+
+
+
+
 <div style="max-width: 740px; margin: 0 auto;">    
 <h2 id="publications">Publications</h2>
 

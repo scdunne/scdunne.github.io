@@ -34,17 +34,17 @@ The exact algorithm balances this property of going to lower energy states more 
 \caption{My Algorithm}
 \begin{algorithmic}
 \Require Initial coordinates $x_0$, energy function $E(x)$, inverse temperature $\beta$, easy-to-sample proposal distribution $q(x' \mid x)$, number of simulation steps $T$, burn-in time $b$ \\
-\For{$t \in \{1, \dots, T\}$}
-\State Sample proposal $x' \sim q(x' \mid x_t)$
-\State Compute acceptance ratio $\alpha$ from energy and proposal distributions
-\State Sample uniform random $u \in [0,1]$
-\If{$u < \alpha$}
-    \State $ x_{t+1} \gets x' $ 
-\Else{}
-    \State $ x_{t+1} \gets x_t $ 
-\EndIf
-\Return $ \{ x_t \}_{t=b}^T $ 
-\EndFor
+\FOR{$t \in \{1, \dots, T\}$}
+\STATE Sample proposal $x' \sim q(x' \mid x_t)$
+\STATE Compute acceptance ratio $\alpha$ from energy and proposal distributions
+\STATE Sample uniform random $u \in [0,1]$
+\IF{$u < \alpha$}
+    \STATE $ x_{t+1} \gets x' $ 
+\ELSE
+    \STATE $ x_{t+1} \gets x_t $ 
+\ENDIF
+\ENDFOR
+\RETURN $ \{ x_t \}_{t=b}^T $
 \end{algorithmic}
 \end{algorithm}
 </pre>

@@ -24,40 +24,6 @@ The ability to compare the relative probabilities of two states allows us to use
 
 To actually implement this algorithm, you need a *proposal* distribution which we call $q$. This just gives you a way to propose the next state $x'$, given that you are currently at state $x$, and we have to also know its probability density $q(x' \mid x)$.
 
-
-<pre id="quicksort" class="pseudocode">
-    % This quicksort algorithm is extracted from Chapter 7, Introduction to Algorithms (3rd edition)
-    \begin{algorithm}
-    \caption{Quicksort}
-    \begin{algorithmic}
-    \PROCEDURE{Quicksort}{$A, p, r$}
-        \IF{$p < r$} 
-            \STATE $q = $ \CALL{Partition}{$A, p, r$}
-            \STATE \CALL{Quicksort}{$A, p, q - 1$}
-            \STATE \CALL{Quicksort}{$A, q + 1, r$}
-        \ENDIF
-    \ENDPROCEDURE
-    \PROCEDURE{Partition}{$A, p, r$}
-        \STATE $x = A[r]$
-        \STATE $i = p - 1$
-        \FOR{$j = p$ \TO $r - 1$}
-            \IF{$A[j] < x$}
-                \STATE $i = i + 1$
-                \STATE exchange
-                $A[i]$ with $A[j]$
-            \ENDIF
-            \STATE exchange $A[i]$ with $A[r]$
-        \ENDFOR
-    \ENDPROCEDURE
-    \end{algorithmic}
-    \end{algorithm}
-</pre>
-
-<script>
-    pseudocode.renderElement(document.getElementById("quicksort"));
-</script>
-
-
 The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x=1.0$ to $x' = 1.2$ under $q$, you might want to reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements is as follows:
 
 
@@ -85,19 +51,21 @@ The exact algorithm balances this property of going to lower energy states more 
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOMContentLoaded fired");
-    console.log("pseudocode library loaded:", typeof pseudocode !== 'undefined');
-    
     const renderAlgorithm = function() {
       const elem = document.getElementById("my-algorithm");
-      console.log("Algorithm element found:", elem);
       if (elem && typeof pseudocode !== 'undefined') {
         try {
           pseudocode.renderElement(elem);
           console.log("Algorithm rendered successfully");
           
-          // Now process the rendered content with MathJax
+          // Force MathJax to process the element and its children
           if (window.MathJax) {
+            // Find all script tags with math in the rendered element
+            const scripts = elem.querySelectorAll('script[type="math/tex"], script[type="math/tex; mode=display"]');
+            scripts.forEach(script => {
+              MathJax.Hub.Queue(["Typeset", MathJax.Hub, script]);
+            });
+            // Also try to typeset the whole element
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, elem]);
           }
         } catch(e) {
@@ -112,6 +80,8 @@ The exact algorithm balances this property of going to lower energy states more 
     } else {
       renderAlgorithm();
     }
+  });
+</script>
   });
 </script>
 

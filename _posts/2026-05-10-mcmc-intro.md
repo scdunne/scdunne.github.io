@@ -68,3 +68,5 @@ The exact algorithm balances this property of going to lower energy states more 
 </script>
 
 debugging... can you see this?
+
+Okay now trying some inline math: $$y = x^2$$ did it work?

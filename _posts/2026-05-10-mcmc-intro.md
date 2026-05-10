@@ -29,7 +29,7 @@ The exact algorithm balances this property of going to lower energy states more 
 
 
 
-<pre id="my-algorithm" style="display:hidden;">
+<pre id="my-algorithm">
 \begin{algorithm}
 \caption{My Algorithm}
 \begin{algorithmic}

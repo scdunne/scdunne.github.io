@@ -27,7 +27,7 @@ To actually implement this algorithm, you need a *proposal* distribution which w
 The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x$ to $x'$ under $q$, you'll want to occasionally reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements is as follows:
 
 
-<pre id="Basic MCMC" class="pseudocode">
+<pre id="my-algorithm" class="pseudocode">
 \begin{algorithm}
 \caption{Basic MCMC}
 \begin{algorithmic}

@@ -24,7 +24,7 @@ The ability to compare the relative probabilities of two states allows us to use
 
 To actually implement this algorithm, you need a *proposal* distribution which we call $q$. This just gives you a way to propose the next state $x'$, given that you are currently at state $x$, and we have to also know its probability density $q(x' \mid x)$.
 
-The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x=1.0$ to $x' = 1.2$ under $q$, you might want to reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements is as follows:
+The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x$ to $x'$ under $q$, you'll want to reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements is as follows:
 
 
 <pre id="my-algorithm" class="pseudocode">
@@ -47,33 +47,6 @@ The exact algorithm balances this property of going to lower energy states more 
 \end{algorithm}
 </pre>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const renderAlgorithm = function() {
-      const elem = document.getElementById("my-algorithm");
-      if (elem && typeof pseudocode !== 'undefined') {
-        try {
-          pseudocode.renderElement(elem);
-          console.log("Algorithm rendered successfully");
-          
-          // Trigger MathJax to process the rendered content
-          if (window.MathJax) {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub, elem]);
-          }
-        } catch(e) {
-          console.error("Error rendering algorithm:", e);
-        }
-      }
-    };
-    
-    // Wait for MathJax to be ready before rendering
-    if (window.MathJax) {
-      MathJax.Hub.Queue(renderAlgorithm);
-    } else {
-      renderAlgorithm();
-    }
-  });
-</script>
 
 
 debugging... can you see this?

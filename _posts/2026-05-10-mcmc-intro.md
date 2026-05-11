@@ -10,11 +10,11 @@ This post is a work in progress! The goal is to describe the intuition behind th
 
 ### MCMC Basics (skip if you know this!)
 
-Suppose we want to sample from a Boltzmann distribution of the form $\pi(x) = \frac{1}{Z} e^{-U(x)} $, where $ U(x) $ is a potential energy function and $ Z $ is the normalizing constant. This is a common problem in statistical physics, machine learning, and many other fields. However, sampling from this distribution can be challenging, especially when $U(x)$ is complex and high-dimensional.
+Suppose we want to sample from a (Boltzmann) probability distribution of the form $\pi(x) = \frac{1}{Z} e^{-\beta U(x)} $, where $ U(x) $ is a potential energy function and $ Z $ is the normalizing constant. $\beta$ is an inverse temperature, but it will be kept constant for the purposes of this article, so don't worry about it. This is a common problem in statistical physics, machine learning, and many other fields. However, sampling from this distribution can be challenging, especially when $U(x)$ is complex and high-dimensional.
 
 Let's start with a simple example. Suppose we have two states in one dimension separated by an energy barrier. Below, we'll picture both the energy and the probability density induced by the Boltzmann distribution.
 
-#TODO: make the visualizations
+![alt text]({{ site.baseurl }}/assets/unseparated_distribution.png "Double Well potential"){: width="500px"}
 
 In most use cases, we don't have access to the normalizing constant $Z$, but we do have access to $U$. You can think about this as being able to evaluate an energy, but only evaluating *relative* probabilities: say we're comparing state $x$ and state $x'$, then 
 
@@ -24,17 +24,17 @@ The ability to compare the relative probabilities of two states allows us to use
 
 To actually implement this algorithm, you need a *proposal* distribution which we call $q$. This just gives you a way to propose the next state $x'$, given that you are currently at state $x$, and we have to also know its probability density $q(x' \mid x)$.
 
-The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x$ to $x'$ under $q$, you'll want to reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements is as follows:
+The exact algorithm balances this property of going to lower energy states more often with the bias induced by your proposal distribution: if you're really likely to go from state $x$ to $x'$ under $q$, you'll want to occasionally reject a lower energy transition to correct for the bias in your proposal. The exact algorithm implements is as follows:
 
 
-<pre id="my-algorithm" class="pseudocode">
+<pre id="Basic MCMC" class="pseudocode">
 \begin{algorithm}
-\caption{My Algorithm}
+\caption{Basic MCMC}
 \begin{algorithmic}
 \Require Initial coordinates $x_0$, energy function $U(x)$, inverse temperature $\beta$, easy-to-sample proposal distribution $q(x' \mid x)$, number of simulation steps $T$, burn-in time $b$ \\
 \FOR{$t \in \{1, \dots, T\}$}
-\STATE Sample proposal $x' \sim q(x' \mid x_t)$
-\STATE Compute acceptance ratio $\alpha$ from energy and proposal distributions
+\STATE Sample proposal $x' \sim q(\cdot \mid x_t)$
+\STATE Compute $\alpha = \frac{\pi(x')}{\pi(x)} \frac{q(x \mid x')}{q(x' \mid x)} = \exp(-\beta U(x') + \beta U(x)) \frac{q(x \mid x')}{q(x' \mid x)}$
 \STATE Sample uniform random $u \in [0,1]$
 \IF{$u < \alpha$}
     \STATE $ x_{t+1} \gets x' $ 
@@ -55,3 +55,20 @@ The exact algorithm balances this property of going to lower energy states more 
     }
   });
 </script>
+
+
+We can implement this on our example distribution with modes at $x=-2$ and $x=2$ and using a gaussian proposal distribution $q(x' \mid x) = \mathcal{ \cdot ; x, \sigma}$ where $\sigma$ sets the scale of the perturbation. Here is an example trajectory, showing the empirical probability distribution we collect on the bottom.
+
+<img src="https://github.com/scdunne/scdunne.github.io/blob/main/assets/local_mcmc.gif" alt="GIF of MCMC in a double well potential">
+
+Using these samples, let's calculate the true mean value of $x$ under the distribution $\pi$. This can be a high-dimensional integral in general, so it's useful to use the Monte Carlo samples as an estimator: $\mu = \int x \cdot \pi(x) dx \approx \frac{1}{N} \sum_{i=1}^N x_i ; x_i \sim \pi(\cdot)$ where our samples come from the MCMC chain. The longer we run the chain, the closer we get to the ground truth value:
+
+![alt text]({{ site.baseurl }}/assets/estimated_mean_over_time.png "MCMC estimate of the mean of the distribution"){: width="500px"}
+
+
+Now suppose we separate these modes even further, placing them at $x=-4$ and $x=4$. Let's see what happens when we try to run the same code:
+
+<img src="https://github.com/scdunne/scdunne.github.io/blob/main/assets/local_mcmc_sep.gif" alt="GIF of MCMC in a double well potential with larger mode separation">
+
+Annoyingly, we start off in the right mode and never seem to escape it! This gives us a good local estimate of the mode density, but we don't see anything about the second mode. Let's try again to see the mean estimate over time:
+![alt text]({{ site.baseurl }}/assets/estimated_mean_over_time_sep.png "MCMC estimate of the mean of the distribution, with larger separation"){: width="500px"}

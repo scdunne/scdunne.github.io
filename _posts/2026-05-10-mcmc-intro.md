@@ -59,7 +59,7 @@ The exact algorithm balances this property of going to lower energy states more 
 
 We can implement this on our example distribution with modes at $x=-2$ and $x=2$ and using a gaussian proposal distribution $q(x' \mid x) = \mathcal{ \cdot ; x, \sigma}$ where $\sigma$ sets the scale of the perturbation. Here is an example trajectory, showing the empirical probability distribution we collect on the bottom.
 
-<img src="https://github.com/scdunne/scdunne.github.io/blob/main/assets/local_mcmc.gif" alt="GIF of MCMC in a double well potential">
+![GIF of MCMC in a double well potential]({{ site.baseurl }}/assets/local_mcmc.gif)
 
 Using these samples, let's calculate the true mean value of $x$ under the distribution $\pi$. This can be a high-dimensional integral in general, so it's useful to use the Monte Carlo samples as an estimator: $\mu = \int x \cdot \pi(x) dx \approx \frac{1}{N} \sum_{i=1}^N x_i ; x_i \sim \pi(\cdot)$ where our samples come from the MCMC chain. The longer we run the chain, the closer we get to the ground truth value:
 
@@ -68,7 +68,7 @@ Using these samples, let's calculate the true mean value of $x$ under the distri
 
 Now suppose we separate these modes even further, placing them at $x=-4$ and $x=4$. Let's see what happens when we try to run the same code:
 
-<img src="https://github.com/scdunne/scdunne.github.io/blob/main/assets/local_mcmc_sep.gif" alt="GIF of MCMC in a double well potential with larger mode separation">
+![GIF of MCMC in a double well potential with larger mode separation]({{ site.baseurl }}/assets/local_mcmc_sep.gif)
 
 Annoyingly, we start off in the right mode and never seem to escape it! This gives us a good local estimate of the mode density, but we don't see anything about the second mode. Let's try again to see the mean estimate over time:
 ![alt text]({{ site.baseurl }}/assets/estimated_mean_over_time_sep.png "MCMC estimate of the mean of the distribution, with larger separation"){: width="500px"}

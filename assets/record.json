@@ -71,5 +71,137 @@
         "name": "Nicholas A. Kotov"
       }
     ]
+  },
+  {
+    "paperId": "5b24a3d6346dd9d077467abde174b8f1454db7ee",
+    "externalIds": {
+      "DOI": "10.1016/j.jconrel.2022.05.029",
+      "CorpusId": 249128802,
+      "PubMed": "35623493"
+    },
+    "title": "Molecular design of a pathogen activated, self-assembling mechanopharmaceutical device.",
+    "venue": "Journal of Controlled Release",
+    "year": 2022,
+    "citationCount": 5,
+    "authors": [
+      {
+        "authorId": "2050195749",
+        "name": "A. Willmer"
+      },
+      {
+        "authorId": "2066549177",
+        "name": "Jiaying Nie"
+      },
+      {
+        "authorId": "1751387927",
+        "name": "Mery Vet George De la Rosa"
+      },
+      {
+        "authorId": "2274116208",
+        "name": "Winnie Wen"
+      },
+      {
+        "authorId": "2336734456",
+        "name": "Steven Dunne"
+      },
+      {
+        "authorId": "2094964",
+        "name": "G. Rosania"
+      }
+    ]
+  },
+  {
+    "paperId": "8a896d0cdb19fb522800ea58def62168d86ced08",
+    "externalIds": {
+      "PubMedCentral": "8780429",
+      "DOI": "10.3390/pharmaceutics14010015",
+      "CorpusId": 245448887,
+      "PubMed": "35056910"
+    },
+    "title": "Quantitative Analysis of the Phase Transition Mechanism Underpinning the Systemic Self-Assembly of a Mechanopharmaceutical Device",
+    "venue": "Pharmaceutics",
+    "year": 2021,
+    "citationCount": 4,
+    "authors": [
+      {
+        "authorId": "2336734456",
+        "name": "Steven Dunne"
+      },
+      {
+        "authorId": "2050195749",
+        "name": "A. Willmer"
+      },
+      {
+        "authorId": "13990589",
+        "name": "Rosemary V. Swanson"
+      },
+      {
+        "authorId": "6054838",
+        "name": "Deepak Almeida"
+      },
+      {
+        "authorId": "4586509",
+        "name": "Nicole C. Ammerman"
+      },
+      {
+        "authorId": "2117004",
+        "name": "K. Stringer"
+      },
+      {
+        "authorId": "8412335",
+        "name": "E. Capparelli"
+      },
+      {
+        "authorId": "2094964",
+        "name": "G. Rosania"
+      }
+    ]
+  },
+  {
+    "paperId": "b7a5c0a39bec40540dc869450e849bf90a6486ed",
+    "externalIds": {
+      "PubMedCentral": "8779763",
+      "DOI": "10.3390/pharmaceutics14010017",
+      "CorpusId": 246165392,
+      "PubMed": "35056913"
+    },
+    "title": "An Adaptive Biosystems Engineering Approach towards Modeling the Soluble-to-Insoluble Phase Transition of Clofazimine",
+    "venue": "Pharmaceutics",
+    "year": 2021,
+    "citationCount": 5,
+    "authors": [
+      {
+        "authorId": "2050195749",
+        "name": "A. Willmer"
+      },
+      {
+        "authorId": "2336734456",
+        "name": "Steven Dunne"
+      },
+      {
+        "authorId": "13990589",
+        "name": "Rosemary V. Swanson"
+      },
+      {
+        "authorId": "6054838",
+        "name": "Deepak Almeida"
+      },
+      {
+        "authorId": "4586509",
+        "name": "Nicole C. Ammerman"
+      },
+      {
+        "authorId": "2117004",
+        "name": "K. Stringer"
+      },
+      {
+        "authorId": "8412335",
+        "name": "E. Capparelli"
+      },
+      {
+        "authorId": "2094964",
+        "name": "G. Rosania"
+      }
+    ]
   }
 ]

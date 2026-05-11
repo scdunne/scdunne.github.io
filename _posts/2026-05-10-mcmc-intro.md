@@ -47,8 +47,11 @@ The exact algorithm balances this property of going to lower energy states more 
 \end{algorithm}
 </pre>
 
-
-
-debugging... can you see this?
-
-Okay now trying some inline math: $$y = x^2$$ did it work?
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elem = document.getElementById("my-algorithm");
+    if (elem && typeof pseudocode !== 'undefined') {
+      pseudocode.renderElement(elem);
+    }
+  });
+</script>

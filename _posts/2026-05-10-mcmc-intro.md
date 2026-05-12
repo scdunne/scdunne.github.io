@@ -34,7 +34,7 @@ The exact algorithm balances this property of going to lower energy states more 
 \Require Initial coordinates $x_0$, energy function $U(x)$, inverse temperature $\beta$, easy-to-sample proposal distribution $q(x' \mid x)$, number of simulation steps $T$, burn-in time $b$ \\
 \FOR{$t \in \{1, \dots, T\}$}
 \STATE Sample proposal $x' \sim q(\cdot \mid x_t)$
-\STATE Compute $\alpha = \frac{\pi(x')}{\pi(x)} \frac{q(x \mid x')}{q(x' \mid x)} = \exp(-\beta U(x') + \beta U(x)) \frac{q(x \mid x')}{q(x' \mid x)}$
+\STATE Compute $\alpha = \frac{\pi(x')}{\pi(x_t)} \frac{q(x_t \mid x')}{q(x' \mid x_t)} = \exp(-\beta U(x') + \beta U(x_t)) \frac{q(x_t \mid x')}{q(x' \mid x_t)}$
 \STATE Sample uniform random $u \in [0,1]$
 \IF{$u < \alpha$}
     \STATE $ x_{t+1} \gets x' $ 
@@ -59,16 +59,24 @@ The exact algorithm balances this property of going to lower energy states more 
 
 We can implement this on our example distribution with modes at $x=-2$ and $x=2$ and using a gaussian proposal distribution $q(x' \mid x) = \mathcal{ \cdot ; x, \sigma}$ where $\sigma$ sets the scale of the perturbation. Here is an example trajectory, showing the empirical probability distribution we collect on the bottom.
 
-![GIF of MCMC in a double well potential]({{ site.baseurl }}/assets/local_mcmc.gif)
+![GIF of MCMC in a double well potential]({{ site.baseurl }}/assets/mcmc_demos/bimodal_local_mcmc.gif)
 
-Using these samples, let's calculate the true mean value of $x$ under the distribution $\pi$. This can be a high-dimensional integral in general, so it's useful to use the Monte Carlo samples as an estimator: $\mu = \int x \cdot \pi(x) dx \approx \frac{1}{N} \sum_{i=1}^N x_i ; x_i \sim \pi(\cdot)$ where our samples come from the MCMC chain. The longer we run the chain, the closer we get to the ground truth value:
+Using these samples, let's calculate the true mean value of $x$ under the distribution $\pi$. This can be a high-dimensional integral in general, so it's useful to use the Monte Carlo samples as an estimator: $\mu = \int x \cdot \pi(x) dx \approx \frac{1}{N} \sum_{i=1}^N x_i ; \> x_i \sim \pi(\cdot)$ where our samples come from the MCMC chain. The longer we run the chain, the closer we get to the ground truth value:
 
 ![alt text]({{ site.baseurl }}/assets/estimated_mean_over_time.png "MCMC estimate of the mean of the distribution"){: width="500px"}
 
 
 Now suppose we separate these modes even further, placing them at $x=-4$ and $x=4$. Let's see what happens when we try to run the same code:
 
-![GIF of MCMC in a double well potential with larger mode separation]({{ site.baseurl }}/assets/local_mcmc_sep.gif)
+![GIF of MCMC in a double well potential with larger mode separation]({{ site.baseurl }}/assets/mcmc_demos/bimodal_sep_local_mcmc.gif)
 
-Annoyingly, we start off in the right mode and never seem to escape it! This gives us a good local estimate of the mode density, but we don't see anything about the second mode. Let's try again to see the mean estimate over time:
+Annoyingly, we start off in the righthand mode and never seem to escape it! This gives us a good local estimate of the mode density, but we don't see anything about the second mode. Let's try again to see the mean estimate over time:
 ![alt text]({{ site.baseurl }}/assets/estimated_mean_over_time_sep.png "MCMC estimate of the mean of the distribution, with larger separation"){: width="500px"}
+
+As you can see, our estimate is very bad. The lesson is that *local* MCMC moves have trouble climbing energy barriers. In the first example the energy barrier was low enough that this didn't cause a problem, but when we move the modes further apart (which in turn heightens the energy barrier), you end up with *mode collapse* which is highly sensitive to your starting conditions. 
+
+One remedy to this issue is to use a *global* proposal distribution, which does not depend on the previous state. In this example we'll look at $q(x' \mid x) = q(x') = \mathcal{0, 4}$, which is a gaussian distribution centered at the origin with variance $4$. Note that each proposed state $x'$ does not actually depend on the previous state $x$
+
+![GIF of Global MCMC in a double well potential with larger mode separation]({{ site.baseurl }}/assets/mcmc_demos/bimodal_sep_global_mcmc.gif)
+
+Notice how the points are allowed to 'teleport' to the other side. However, we still reject a lot of the proposed configurations because we are essentially wasting proposals on the area in the middle where there is high proposal probability and low target probability.

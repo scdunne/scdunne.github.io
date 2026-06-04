@@ -75,11 +75,12 @@
   {
     "paperId": "5b24a3d6346dd9d077467abde174b8f1454db7ee",
     "externalIds": {
+      "PubMedCentral": "9901583",
       "DOI": "10.1016/j.jconrel.2022.05.029",
       "CorpusId": 249128802,
       "PubMed": "35623493"
     },
-    "title": "Molecular design of a pathogen activated, self-assembling mechanopharmaceutical device.",
+    "title": "Molecular Design of a Pathogen Activated, Self-Assembling Mechanopharmaceutical Device",
     "venue": "Journal of Controlled Release",
     "year": 2022,
     "citationCount": 5,

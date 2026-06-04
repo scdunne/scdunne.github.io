@@ -8,9 +8,9 @@ This post is a work in progress! The goal is to describe the intuition behind th
 
 ---
 
-### MCMC Basics (skip if you know this!)
+### MCMC Basics
 
-Suppose we want to sample from a (Boltzmann) probability distribution of the form $\pi(x) = \frac{1}{Z} e^{-\beta U(x)} $, where $ U(x) $ is a potential energy function and $ Z $ is the normalizing constant. $\beta$ is an inverse temperature, but it will be kept constant for the purposes of this article, so don't worry about it. This is a common problem in statistical physics, machine learning, and many other fields. However, sampling from this distribution can be challenging, especially when $U(x)$ is complex and high-dimensional.
+Suppose we want to sample from a (Boltzmann) probability distribution of the form $\pi(x) = \frac{1}{Z} e^{-\beta U(x)}$, where $ U(x) $ is a potential energy function and $ Z $ is the normalizing constant. $\beta$ is an inverse temperature, but it will be kept constant for the purposes of this article, so don't worry about it. This is a common problem in statistical physics, machine learning, and many other fields. However, sampling from this distribution can be challenging, especially when $U(x)$ is complex and high-dimensional.
 
 Let's start with a simple example. Suppose we have two states in one dimension separated by an energy barrier. Below, we'll picture both the energy and the probability density induced by the Boltzmann distribution.
 
@@ -75,8 +75,8 @@ Annoyingly, we start off in the righthand mode and never seem to escape it! This
 
 As you can see, our estimate is very bad. The lesson is that *local* MCMC moves have trouble climbing energy barriers. In the first example the energy barrier was low enough that this didn't cause a problem, but when we move the modes further apart (which in turn heightens the energy barrier), you end up with *mode collapse* which is highly sensitive to your starting conditions. 
 
-One remedy to this issue is to use a *global* proposal distribution, which does not depend on the previous state. In this example we'll look at $q(x' \mid x) = q(x') = \mathcal{0, 4}$, which is a gaussian distribution centered at the origin with variance $4$. Note that each proposed state $x'$ does not actually depend on the previous state $x$
+One remedy to this issue is to use a *global* proposal distribution, which does not depend on the previous state. In this example we'll look at $q(x' \mid x) = q(x') = \mathcal{N}(0, 4)$, which is a gaussian distribution centered at the origin with variance $4$. Note that each proposed state $x'$ does not actually depend on the previous state $x$
 
 ![GIF of Global MCMC in a double well potential with larger mode separation]({{ site.baseurl }}/assets/mcmc_demos/bimodal_sep_global_mcmc.gif)
 
-Notice how the points are allowed to 'teleport' to the other side. However, we still reject a lot of the proposed configurations because we are essentially wasting proposals on the area in the middle where there is high proposal probability and low target probability.
+Notice how the points are allowed to 'teleport' to the other side. However, we still reject a lot of the proposed configurations because we are essentially wasting proposals on the area in the middle where there is high proposal probability and low target probability.–lgov7h
